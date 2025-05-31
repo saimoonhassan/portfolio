@@ -38,10 +38,14 @@ var vite_config_default = defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist"),
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true
   },
-  base: "/portfolio/"
+  server: {
+    port: 5173,
+    host: true,
+    open: true
+  }
 });
 
 // server/vite.ts
@@ -153,7 +157,11 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
   const port = 5e3;
-  server.listen(port, () => {
+  server.listen({
+    port,
+    host: "0.0.0.0",
+    reusePort: true
+  }, () => {
     log(`serving on port ${port}`);
   });
 })();
