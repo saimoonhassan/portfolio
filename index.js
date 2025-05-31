@@ -37,9 +37,11 @@ var vite_config_default = defineConfig({
     }
   },
   root: path.resolve(import.meta.dirname, "client"),
+  base: "/portfolio/",
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
-    emptyOutDir: true
+    emptyOutDir: true,
+    assetsDir: "assets"
   },
   server: {
     port: 5173,
