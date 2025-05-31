@@ -36,16 +36,10 @@ var vite_config_default = defineConfig({
       "@assets": path.resolve(import.meta.dirname, "attached_assets")
     }
   },
-  root: "./client",
-  base: "/portfolio/",
+  root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: "../dist",
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true
-  },
-  server: {
-    port: 5173,
-    host: true,
-    open: true
   }
 });
 
